@@ -14,8 +14,8 @@ class AppModule {
 
     companion object {
 
-        @Provides
         @Singleton
+        @Provides
         fun provideRetrofit(): Retrofit = Retrofit.Builder()
             .baseUrl("https://api.mercadolibre.com/")
             .addConverterFactory(GsonConverterFactory.create())
