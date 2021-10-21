@@ -4,6 +4,7 @@
 
     <application>
         <activity
+            android:theme="@style/NoActionBar"
             android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
