@@ -52,5 +52,8 @@ dependencies {
     implementation "androidx.hilt:hilt-compiler:$hilt_compiler_version"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodel_version"
 
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
     implementation(project(":domain"))
 }
