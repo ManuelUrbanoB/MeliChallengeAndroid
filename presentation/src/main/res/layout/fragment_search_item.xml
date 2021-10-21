@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
             android:layout_width="@dimen/no_dp"
             android:layout_height="@dimen/no_dp"
             app:queryHint="@string/search_in_meli"
