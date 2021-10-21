@@ -9,6 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeliChallenge"
         android:allowBackup="true"
+        android:name="com.melichallenge.BaseApplication"
         android:fullBackupContent="true">
     </application>
 
