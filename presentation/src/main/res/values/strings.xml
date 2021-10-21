@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MeliChallenge</string>
+    <string name="search_in_meli">Buscar en Mercado Libre</string>
 </resources>

@@ -9,5 +9,12 @@ java {
 }
 
 dependencies {
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    //Retrofit and Gson
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.google.code.gson:gson:$gson_version"
+
     implementation(project(":domain"))
 }
