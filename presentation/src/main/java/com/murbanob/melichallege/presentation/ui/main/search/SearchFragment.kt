@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import com.murbanob.melichallege.presentation.databinding.FragmentSearchItemBinding
 import com.murbanob.melichallege.presentation.ui.base.BaseFragment
 
@@ -24,6 +25,7 @@ class SearchFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         changeConfigurationSearchView()
+        configureSearchListeners()
     }
 
     private fun changeConfigurationSearchView() {
@@ -31,6 +33,21 @@ class SearchFragment : BaseFragment() {
         binding?.searchView?.isFocusable = true
         binding?.searchView?.isIconified = false
         binding?.searchView?.requestFocusFromTouch()
+    }
+
+    private fun configureSearchListeners() {
+        binding?.searchView?.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null && query.isNotEmpty()) {
+                    onSearchResult?.invoke(query)
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+        })
     }
 
     override fun onDestroy() {
