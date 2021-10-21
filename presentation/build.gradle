@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
@@ -9,13 +9,13 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.murbanob.melichallenge"
         minSdk 26
         targetSdk 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -37,9 +37,10 @@ dependencies {
 
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     //Hilt dependencies
     implementation "com.google.dagger:hilt-android:$hilt_version"
@@ -47,7 +48,5 @@ dependencies {
     implementation "androidx.hilt:hilt-compiler:$hilt_compiler_version"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodel_version"
 
-    implementation(project(":presentation"))
     implementation(project(":domain"))
-    implementation(project(":data"))
 }
