@@ -1,7 +1,8 @@
-package com.murbanob.melichallenge
+package com.murbanob.melichallege.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.murbanob.melichallege.presentation.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
