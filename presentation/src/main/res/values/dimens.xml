@@ -9,4 +9,7 @@
     <dimen name="margin_image_adapter">10dp</dimen>
     <dimen name="margin_card_item">10dp</dimen>
     <dimen name="margin_image_content_item">25dp</dimen>
+    <dimen name="picture_detail_height">300dp</dimen>
+    <dimen name="padding_detail_item">20dp</dimen>
+    <dimen name="item_detail_margin_top_price">30dp</dimen>
 </resources>
