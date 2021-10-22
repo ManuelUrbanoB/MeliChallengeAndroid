@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.murbanob.melichallege.presentation.R
 import com.murbanob.melichallege.presentation.databinding.ActivityMainBinding
 import com.murbanob.melichallege.presentation.extension.attachFragment
@@ -14,6 +15,7 @@ import com.murbanob.melichallege.presentation.ui.main.itemAdapter.ItemAdapter
 import com.murbanob.melichallege.presentation.ui.search.SearchFragment
 import com.murbanob.melichallenge.domain.entities.Item
 import com.murbanob.melichallenge.domain.entities.ItemSearchResponse
+import com.murbanob.melichallenge.domain.helpers.ErrorResult
 import com.murbanob.melichallenge.domain.helpers.Result
 
 class MainActivity : BaseActivity() {
@@ -65,10 +67,16 @@ class MainActivity : BaseActivity() {
         binding.progressBar.visibility = View.GONE
         when (result) {
             is Result.Success -> {
-                adapterList.items = result.data.items
+                adapterList.updateItems(result.data.items)
             }
-            else -> {
-                //TODO Show Error here
+            is Result.Error -> {
+                Snackbar
+                    .make(
+                        binding.fragmentSearchView,
+                        ErrorResult.getException(exception = result.exception).getMessageToUser(),
+                        Snackbar.LENGTH_LONG
+                    )
+                    .show()
             }
         }
     }
