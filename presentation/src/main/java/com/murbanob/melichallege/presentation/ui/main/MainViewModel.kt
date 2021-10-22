@@ -17,7 +17,7 @@ class MainViewModel @Inject constructor(private val getSearchUseCase: GetSearchI
 
     private var _getSearchMediator: MediatorLiveData<Result<ItemSearchResponse>> =
         MediatorLiveData()
-    private val getResultItemLiveData: LiveData<Result<ItemSearchResponse>> get() = _getSearchMediator
+    val getResultItemLiveData: LiveData<Result<ItemSearchResponse>> get() = _getSearchMediator
 
     fun searchItems(value: String) {
         viewModelScope.launch {
