@@ -5,12 +5,13 @@ import com.murbanob.melichallenge.data.datasource.remote.ItemRemoteDataSource
 import com.murbanob.melichallenge.data.datasource.remote.ItemRemoteDataSourceImpl
 import com.murbanob.melichallenge.data.repository.items.ItemRepositoryImpl
 import com.murbanob.melichallenge.domain.repository.items.ItemRepository
+import com.murbanob.melichallenge.domain.usecase.items.GetItemDetailUseCase
+import com.murbanob.melichallenge.domain.usecase.items.GetItemDetailUseCaseImpl
 import com.murbanob.melichallenge.domain.usecase.items.GetSearchItemsUseCase
 import com.murbanob.melichallenge.domain.usecase.items.GetSearchItemsUseCaseImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 
@@ -35,6 +36,10 @@ class ItemsModule {
         @Provides
         fun provideGetSearchItemsUseCase(itemRepository: ItemRepository): GetSearchItemsUseCase =
             GetSearchItemsUseCaseImpl(itemRepository)
+
+        @Provides
+        fun provideGetItemDetailUseCase(itemRepository: ItemRepository): GetItemDetailUseCase =
+            GetItemDetailUseCaseImpl(itemRepository)
 
     }
 

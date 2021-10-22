@@ -1,9 +1,9 @@
 package com.murbanob.melichallege.presentation.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -11,9 +11,10 @@ import com.murbanob.melichallege.presentation.R
 import com.murbanob.melichallege.presentation.databinding.ActivityMainBinding
 import com.murbanob.melichallege.presentation.extension.attachFragment
 import com.murbanob.melichallege.presentation.ui.base.BaseActivity
+import com.murbanob.melichallege.presentation.ui.detail.DetailItemActivity
 import com.murbanob.melichallege.presentation.ui.main.itemAdapter.ItemAdapter
 import com.murbanob.melichallege.presentation.ui.search.SearchFragment
-import com.murbanob.melichallenge.domain.entities.Item
+import com.murbanob.melichallenge.domain.entities.ItemSearch
 import com.murbanob.melichallenge.domain.entities.ItemSearchResponse
 import com.murbanob.melichallenge.domain.helpers.ErrorResult
 import com.murbanob.melichallenge.domain.helpers.Result
@@ -24,7 +25,7 @@ class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val searchFragment: SearchFragment = SearchFragment.createInstance(::searchItems)
-    private val adapterList: ItemAdapter = ItemAdapter()
+    private val adapterList: ItemAdapter = ItemAdapter(::onTapDetail)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,9 +48,13 @@ class MainActivity : BaseActivity() {
         )
     }
 
+    private fun setObservers() {
+        viewModel.getResultItemLiveData.observe(this, Observer(::manageResponseItems))
+    }
+
     private fun setRecyclerView() {
         binding.recyclerItems.apply {
-            layoutManager = LinearLayoutManager(this.context)
+            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
             adapter = adapterList
         }
     }
@@ -59,25 +64,31 @@ class MainActivity : BaseActivity() {
         viewModel.searchItems(value)
     }
 
-    private fun setObservers() {
-        viewModel.getResultItemLiveData.observe(this, Observer(::manageResponseItems))
-    }
-
     private fun manageResponseItems(result: Result<ItemSearchResponse>) {
         binding.progressBar.visibility = View.GONE
         when (result) {
             is Result.Success -> {
-                adapterList.updateItems(result.data.items)
+                adapterList.updateItems(result.data.itemSearches)
             }
             is Result.Error -> {
-                Snackbar
-                    .make(
-                        binding.fragmentSearchView,
-                        ErrorResult.getException(exception = result.exception).getMessageToUser(),
-                        Snackbar.LENGTH_LONG
-                    )
-                    .show()
+                showSnackBarErrorInResultOfItems(result.exception)
             }
         }
+    }
+
+    private fun showSnackBarErrorInResultOfItems(exception: Exception) {
+        Snackbar
+            .make(
+                binding.fragmentSearchView,
+                ErrorResult.getException(exception = exception).getMessageToUser(),
+                Snackbar.LENGTH_LONG
+            )
+            .show()
+    }
+
+    private fun onTapDetail(itemSearch: ItemSearch) {
+        val intent = Intent(this, DetailItemActivity::class.java)
+        intent.putExtra(DetailItemActivity.ITEM_DETAIL, itemSearch.id)
+        startActivity(intent)
     }
 }

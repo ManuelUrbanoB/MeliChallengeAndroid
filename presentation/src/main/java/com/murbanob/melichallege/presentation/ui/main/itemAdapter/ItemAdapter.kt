@@ -4,25 +4,26 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.murbanob.melichallege.presentation.R
 import com.murbanob.melichallege.presentation.extension.inflate
-import com.murbanob.melichallenge.domain.entities.Item
+import com.murbanob.melichallenge.domain.entities.ItemSearch
 
-class ItemAdapter : RecyclerView.Adapter<ItemViewHolder>() {
+class ItemAdapter(private val onTapItemListener: (ItemSearch) -> Unit) :
+    RecyclerView.Adapter<ItemViewHolder>() {
 
-    private var items = listOf<Item>()
+    private var items = listOf<ItemSearch>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder =
-        ItemViewHolder(parent.inflate(R.layout.item_adapter))
+        ItemViewHolder(parent.inflate(R.layout.item_list_adapter))
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(items[position], onTapItemListener)
     }
 
-    fun updateItems(items: List<Item>) {
-        this.items = items
+    fun updateItems(itemSearches: List<ItemSearch>) {
+        this.items = itemSearches
     }
 
     override fun getItemCount(): Int = items.size
