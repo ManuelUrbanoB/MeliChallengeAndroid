@@ -8,7 +8,7 @@ import com.murbanob.melichallenge.domain.entities.Item
 
 class ItemAdapter : RecyclerView.Adapter<ItemViewHolder>() {
 
-    var items = listOf<Item>()
+    private var items = listOf<Item>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -19,6 +19,10 @@ class ItemAdapter : RecyclerView.Adapter<ItemViewHolder>() {
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(items[position])
+    }
+
+    fun updateItems(items: List<Item>) {
+        this.items = items
     }
 
     override fun getItemCount(): Int = items.size
