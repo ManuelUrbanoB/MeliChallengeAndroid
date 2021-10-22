@@ -1,4 +1,4 @@
-package com.murbanob.melichallege.presentation.ui.main.search
+package com.murbanob.melichallege.presentation.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
