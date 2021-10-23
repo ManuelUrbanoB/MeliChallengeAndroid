@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.murbanob.melichallege.presentation.R
+import com.murbanob.melichallenge.domain.extension.getPriceFormat
 import com.murbanob.melichallenge.domain.entities.ItemSearch
 
 
@@ -31,7 +32,7 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private fun setInformationInView(itemSearch: ItemSearch) {
         loadImage(itemSearch.thumbnail)
         textTitleView.text = itemSearch.title
-        textPriceView.text = itemSearch.price
+        textPriceView.text = itemSearch.getPriceFormat()
     }
 
     private fun loadImage(url: String) {

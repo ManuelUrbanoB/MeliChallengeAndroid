@@ -8,7 +8,7 @@ data class ItemDetailResponseApi(
     @SerializedName("title")
     val title: String,
     @SerializedName("price")
-    val price: String,
+    val price: Double,
     @SerializedName("currency_id")
     val currency_id: String,
     @SerializedName("thumbnail")

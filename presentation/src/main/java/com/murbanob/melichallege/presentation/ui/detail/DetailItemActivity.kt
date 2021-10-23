@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.murbanob.melichallege.presentation.R
 import com.murbanob.melichallege.presentation.databinding.ActivityDetailItemBinding
+import com.murbanob.melichallenge.domain.extension.getPriceFormat
 import com.murbanob.melichallege.presentation.extension.showErrorRequestSnackBar
 import com.murbanob.melichallege.presentation.ui.base.BaseActivity
 import com.murbanob.melichallege.presentation.ui.detail.pictureAdapter.PictureAdapter
@@ -66,7 +67,8 @@ class DetailItemActivity : BaseActivity() {
             is Result.Success -> {
                 adapterPictures.updateList(result.data.pictures)
                 binding.textTitleView.text = result.data.title
-                binding.textPriceView.text = result.data.price
+                binding.textPriceView.text =
+                    result.data.getPriceFormat()
             }
             is Result.Error -> {
                 binding.viewPagerPictures.showErrorRequestSnackBar(result.exception)
