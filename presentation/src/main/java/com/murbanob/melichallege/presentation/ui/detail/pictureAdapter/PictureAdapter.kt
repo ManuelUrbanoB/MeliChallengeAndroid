@@ -6,7 +6,7 @@ import com.murbanob.melichallege.presentation.R
 import com.murbanob.melichallege.presentation.extension.inflate
 import com.murbanob.melichallenge.domain.entities.ItemDetailPicture
 
-class PictureAdapter() : RecyclerView.Adapter<PictureViewHolder>() {
+class PictureAdapter : RecyclerView.Adapter<PictureViewHolder>() {
 
     private var pictures: List<ItemDetailPicture> = emptyList()
         set(value) {

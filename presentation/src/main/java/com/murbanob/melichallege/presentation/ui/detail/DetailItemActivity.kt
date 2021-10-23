@@ -7,7 +7,6 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.murbanob.melichallege.presentation.R
 import com.murbanob.melichallege.presentation.databinding.ActivityDetailItemBinding
-import com.murbanob.melichallenge.domain.extension.getPriceFormat
 import com.murbanob.melichallege.presentation.extension.showErrorRequestSnackBar
 import com.murbanob.melichallege.presentation.ui.base.BaseActivity
 import com.murbanob.melichallege.presentation.ui.detail.pictureAdapter.PictureAdapter
