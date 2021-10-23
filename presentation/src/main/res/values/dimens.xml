@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_search">50dp</dimen>
+    <dimen name="padding_search">15dp</dimen>
+    <dimen name="no_dp">0dp</dimen>
+    <dimen name="height_item_adapter">200dp</dimen>
+    <dimen name="margin_image_adapter">10dp</dimen>
+    <dimen name="margin_card_item">10dp</dimen>
+    <dimen name="margin_image_content_item">25dp</dimen>
+    <dimen name="picture_detail_height">300dp</dimen>
+    <dimen name="padding_detail_item">20dp</dimen>
+    <dimen name="item_detail_margin_top_price">30dp</dimen>
+    <dimen name="size_item_price_in_list">20sp</dimen>
+</resources>

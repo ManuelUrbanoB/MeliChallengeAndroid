@@ -1,0 +1,35 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'kotlin-kapt'
+    id 'jacoco'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    testImplementation "junit:junit:$junit_version"
+
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    //Retrofit and Gson
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    //Mockk
+    testImplementation "io.mockk:mockk:$mockk_version"
+
+    //JUnit5
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_5_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_5_version"
+
+    implementation(project(":domain"))
+}
