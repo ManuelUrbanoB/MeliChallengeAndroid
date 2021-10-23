@@ -24,7 +24,7 @@ internal class GetItemDetailUseCaseImplTest {
     fun testGetItemDetailUseCase() {
         coEvery { itemRepository.getItemDetail(any()) } returns Result.Success(mockk())
         runBlocking {
-            useCase.getItemDetailUseCase("id")
+            useCase.getItemDetail("id")
         }
         coVerify { itemRepository.getItemDetail("id") }
     }

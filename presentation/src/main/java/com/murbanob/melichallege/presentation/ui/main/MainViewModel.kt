@@ -8,12 +8,16 @@ import com.murbanob.melichallenge.domain.entities.ItemSearchResponse
 import com.murbanob.melichallenge.domain.helpers.Result
 import com.murbanob.melichallenge.domain.usecase.items.GetSearchItemsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val getSearchUseCase: GetSearchItemsUseCase) :
+class MainViewModel @Inject constructor(
+    private val getSearchUseCase: GetSearchItemsUseCase,
+    private val backgroundDispatcher: CoroutineDispatcher
+) :
     ViewModel() {
 
     private var _getSearchMediator: MediatorLiveData<Result<ItemSearchResponse>> =
@@ -21,7 +25,7 @@ class MainViewModel @Inject constructor(private val getSearchUseCase: GetSearchI
     val getResultItemLiveData: LiveData<Result<ItemSearchResponse>> get() = _getSearchMediator
 
     fun searchItems(value: String) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(backgroundDispatcher) {
             _getSearchMediator.postValue(getSearchUseCase.getSearchItems(value))
         }
     }

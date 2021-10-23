@@ -62,6 +62,7 @@ dependencies {
 
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    testImplementation  "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
 
     //Glide
     implementation "com.github.bumptech.glide:glide:4.11.0"
@@ -70,7 +71,7 @@ dependencies {
     testImplementation "io.mockk:mockk:$mockk_version"
 
     //JUnit5
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_5_version"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.0"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_5_version"
 
     implementation(project(":domain"))
