@@ -1,6 +1,7 @@
 package com.murbanob.melichallege.presentation.ui.detail
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -29,6 +30,7 @@ class DetailItemActivity : BaseActivity() {
         setRecyclerView()
         setObservers()
         getItem()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun reviewItemSearch() {
@@ -78,6 +80,17 @@ class DetailItemActivity : BaseActivity() {
     private fun getItem() {
         binding.progressBar.visibility = View.VISIBLE
         viewModel.getItemDetail(itemSearchId)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {
