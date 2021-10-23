@@ -11,7 +11,6 @@ object ItemDetailMapper {
             title = itemDetailResponseApi.title,
             price = itemDetailResponseApi.price,
             currencyId = itemDetailResponseApi.currency_id,
-            thumbnail = itemDetailResponseApi.thumbnail,
             pictures = itemDetailResponseApi.pictures.map {
                 ItemDetailPictureMapper.convertApiToDomain(it)
             }

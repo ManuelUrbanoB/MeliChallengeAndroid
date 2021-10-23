@@ -2,12 +2,11 @@ package com.murbanob.melichallenge.data.repository.items
 
 import com.murbanob.melichallenge.data.datasource.remote.ItemRemoteDataSource
 import com.murbanob.melichallenge.data.mappers.detail.ItemDetailMapper
-import com.murbanob.melichallenge.data.mappers.detail.ItemDetailPictureMapper
 import com.murbanob.melichallenge.data.mappers.search.ItemSearchResponseMapper
 import com.murbanob.melichallenge.domain.entities.ItemDetail
 import com.murbanob.melichallenge.domain.entities.ItemSearchResponse
-import com.murbanob.melichallenge.domain.repository.items.ItemRepository
 import com.murbanob.melichallenge.domain.helpers.Result
+import com.murbanob.melichallenge.domain.repository.items.ItemRepository
 
 class ItemRepositoryImpl(private val itemRemoteDataSource: ItemRemoteDataSource) : ItemRepository {
     override suspend fun getSearchItems(value: String): Result<ItemSearchResponse> {

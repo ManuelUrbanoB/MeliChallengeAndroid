@@ -4,15 +4,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.murbanob.melichallege.presentation.R
 import com.murbanob.melichallege.presentation.extension.inflate
-import com.murbanob.melichallenge.domain.entities.ItemDetail
 import com.murbanob.melichallenge.domain.entities.ItemDetailPicture
 
-class PictureAdapter : RecyclerView.Adapter<PictureViewHolder>() {
+class PictureAdapter() : RecyclerView.Adapter<PictureViewHolder>() {
 
     private var pictures: List<ItemDetailPicture> = emptyList()
         set(value) {
             field = value
-            notifyDataSetChanged()
+            notifyItemRangeChanged(0, value.size - 1)
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PictureViewHolder =

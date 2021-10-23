@@ -5,15 +5,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.murbanob.melichallege.presentation.R
-import com.murbanob.melichallenge.domain.helpers.Result
 import com.murbanob.melichallege.presentation.databinding.ActivityDetailItemBinding
+import com.murbanob.melichallege.presentation.extension.showErrorRequestSnackBar
 import com.murbanob.melichallege.presentation.ui.base.BaseActivity
 import com.murbanob.melichallege.presentation.ui.detail.pictureAdapter.PictureAdapter
 import com.murbanob.melichallenge.domain.entities.ItemDetail
-import com.murbanob.melichallenge.domain.helpers.ErrorResult
+import com.murbanob.melichallenge.domain.helpers.Result
 
 
 class DetailItemActivity : BaseActivity() {
@@ -53,8 +51,7 @@ class DetailItemActivity : BaseActivity() {
     }
 
     private fun setRecyclerView() {
-        binding.recyclePictures.apply {
-            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.viewPagerPictures.apply {
             adapter = adapterPictures
         }
     }
@@ -72,19 +69,9 @@ class DetailItemActivity : BaseActivity() {
                 binding.textPriceView.text = result.data.price
             }
             is Result.Error -> {
-                showSnackBarErrorInResultOfItems(result.exception)
+                binding.viewPagerPictures.showErrorRequestSnackBar(result.exception)
             }
         }
-    }
-
-    private fun showSnackBarErrorInResultOfItems(exception: Exception) {
-        Snackbar
-            .make(
-                binding.recyclePictures,
-                ErrorResult.getException(exception = exception).getMessageToUser(),
-                Snackbar.LENGTH_LONG
-            )
-            .show()
     }
 
     private fun getItem() {

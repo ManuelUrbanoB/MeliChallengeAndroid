@@ -6,17 +6,16 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.murbanob.melichallege.presentation.R
 import com.murbanob.melichallege.presentation.databinding.ActivityMainBinding
 import com.murbanob.melichallege.presentation.extension.attachFragment
+import com.murbanob.melichallege.presentation.extension.showErrorRequestSnackBar
 import com.murbanob.melichallege.presentation.ui.base.BaseActivity
 import com.murbanob.melichallege.presentation.ui.detail.DetailItemActivity
 import com.murbanob.melichallege.presentation.ui.main.itemAdapter.ItemAdapter
 import com.murbanob.melichallege.presentation.ui.search.SearchFragment
 import com.murbanob.melichallenge.domain.entities.ItemSearch
 import com.murbanob.melichallenge.domain.entities.ItemSearchResponse
-import com.murbanob.melichallenge.domain.helpers.ErrorResult
 import com.murbanob.melichallenge.domain.helpers.Result
 
 class MainActivity : BaseActivity() {
@@ -71,19 +70,9 @@ class MainActivity : BaseActivity() {
                 adapterList.updateItems(result.data.itemSearches)
             }
             is Result.Error -> {
-                showSnackBarErrorInResultOfItems(result.exception)
+                binding.fragmentSearchView.showErrorRequestSnackBar(result.exception)
             }
         }
-    }
-
-    private fun showSnackBarErrorInResultOfItems(exception: Exception) {
-        Snackbar
-            .make(
-                binding.fragmentSearchView,
-                ErrorResult.getException(exception = exception).getMessageToUser(),
-                Snackbar.LENGTH_LONG
-            )
-            .show()
     }
 
     private fun onTapDetail(itemSearch: ItemSearch) {
