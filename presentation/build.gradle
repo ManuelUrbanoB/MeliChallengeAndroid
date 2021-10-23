@@ -38,6 +38,12 @@ android {
     kapt {
         correctErrorTypes true
     }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
@@ -59,6 +65,13 @@ dependencies {
 
     //Glide
     implementation "com.github.bumptech.glide:glide:4.11.0"
+
+    //Mockk
+    testImplementation "io.mockk:mockk:$mockk_version"
+
+    //JUnit5
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_5_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_5_version"
 
     implementation(project(":domain"))
 }

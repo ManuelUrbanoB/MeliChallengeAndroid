@@ -5,6 +5,5 @@ class ItemDetail(
     val title: String,
     val price: String,
     val currencyId: String,
-    val thumbnail: String,
     val pictures: List<ItemDetailPicture>
 )

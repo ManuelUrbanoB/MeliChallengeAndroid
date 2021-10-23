@@ -1,7 +1,6 @@
 package com.melichallenge.di
 
 import com.melichallenge.BaseApplication
-import com.melichallenge.di.items.ItemsModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

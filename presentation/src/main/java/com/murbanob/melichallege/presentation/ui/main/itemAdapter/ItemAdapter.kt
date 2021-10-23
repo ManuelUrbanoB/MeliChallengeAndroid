@@ -12,7 +12,7 @@ class ItemAdapter(private val onTapItemListener: (ItemSearch) -> Unit) :
     private var items = listOf<ItemSearch>()
         set(value) {
             field = value
-            notifyDataSetChanged()
+            notifyItemRangeChanged(0, value.size - 1)
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder =

@@ -16,13 +16,9 @@ class ItemRemoteDataSourceImpl(private val itemApi: ItemApi) : ItemRemoteDataSou
                     val body = response.body()
                     if (body != null) {
                         Result.Success(body)
-                    } else {
-                        Result.Error(ErrorResult.ErrorInResponse.getException())
-                    }
+                    } else Result.Error(ErrorResult.ErrorInResponse.getException())
                 }
-                else -> {
-                    Result.Error(ErrorResult.ErrorInRequest.getException())
-                }
+                else -> Result.Error(ErrorResult.ErrorInRequest.getException())
             }
         } catch (exception: IOException) {
             return Result.Error(ErrorResult.ErrorInNetwork.getException())
@@ -39,13 +35,9 @@ class ItemRemoteDataSourceImpl(private val itemApi: ItemApi) : ItemRemoteDataSou
                     val body = response.body()
                     if (body != null) {
                         Result.Success(body)
-                    } else {
-                        Result.Error(ErrorResult.ErrorInResponse.getException())
-                    }
+                    } else Result.Error(ErrorResult.ErrorInResponse.getException())
                 }
-                else -> {
-                    Result.Error(ErrorResult.ErrorInRequest.getException())
-                }
+                else -> Result.Error(ErrorResult.ErrorInRequest.getException())
             }
         } catch (exception: IOException) {
             return Result.Error(ErrorResult.ErrorInNetwork.getException())

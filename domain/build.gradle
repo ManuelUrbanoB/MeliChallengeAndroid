@@ -4,11 +4,22 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+test {
+    useJUnitPlatform()
 }
 
 dependencies {
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    //Mockk
+    testImplementation "io.mockk:mockk:$mockk_version"
+
+    //JUnit5
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_5_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_5_version"
 }

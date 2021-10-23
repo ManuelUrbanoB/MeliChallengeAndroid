@@ -8,9 +8,7 @@ object ItemDetailPictureMapper {
     fun convertApiToDomain(picturesApi: ItemDetailPicturesApi): ItemDetailPicture {
         return ItemDetailPicture(
             id = picturesApi.id,
-            url = picturesApi.secure_url,
-            size = picturesApi.size,
-            maxSize = picturesApi.max_size
+            url = picturesApi.secure_url
         )
     }
 }

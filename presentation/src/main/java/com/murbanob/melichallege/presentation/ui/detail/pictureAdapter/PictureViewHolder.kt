@@ -5,7 +5,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.murbanob.melichallege.presentation.R
-import com.murbanob.melichallenge.domain.entities.ItemDetail
 import com.murbanob.melichallenge.domain.entities.ItemDetailPicture
 
 class PictureViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

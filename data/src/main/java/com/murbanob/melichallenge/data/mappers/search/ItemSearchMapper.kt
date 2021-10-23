@@ -1,7 +1,6 @@
 package com.murbanob.melichallenge.data.mappers.search
 
 import com.murbanob.melichallenge.data.api.entities.ItemSearchResponseApi
-import com.murbanob.melichallenge.data.api.entities.SearchResponseApi
 import com.murbanob.melichallenge.domain.entities.ItemSearch
 
 object ItemSearchMapper {
