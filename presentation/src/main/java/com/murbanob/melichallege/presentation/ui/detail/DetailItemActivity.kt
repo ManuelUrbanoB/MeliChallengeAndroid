@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.murbanob.melichallege.presentation.R
 import com.murbanob.melichallege.presentation.databinding.ActivityDetailItemBinding
 import com.murbanob.melichallege.presentation.extension.showErrorRequestSnackBar
@@ -52,8 +51,7 @@ class DetailItemActivity : BaseActivity() {
     }
 
     private fun setRecyclerView() {
-        binding.recyclePictures.apply {
-            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.viewPagerPictures.apply {
             adapter = adapterPictures
         }
     }
@@ -71,7 +69,7 @@ class DetailItemActivity : BaseActivity() {
                 binding.textPriceView.text = result.data.price
             }
             is Result.Error -> {
-                binding.recyclePictures.showErrorRequestSnackBar(result.exception)
+                binding.viewPagerPictures.showErrorRequestSnackBar(result.exception)
             }
         }
     }
