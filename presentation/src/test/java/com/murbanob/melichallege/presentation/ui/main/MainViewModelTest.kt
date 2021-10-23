@@ -2,7 +2,6 @@ package com.murbanob.melichallege.presentation.ui.main
 
 import com.murbanob.melichallege.presentation.InstantExecutorExtension
 import com.murbanob.melichallenge.domain.helpers.Result
-import com.murbanob.melichallenge.domain.usecase.items.GetItemDetailUseCase
 import com.murbanob.melichallenge.domain.usecase.items.GetSearchItemsUseCase
 import io.mockk.clearAllMocks
 import io.mockk.coEvery

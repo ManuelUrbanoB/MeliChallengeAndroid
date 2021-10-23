@@ -10,7 +10,7 @@ data class ItemSearchResponseApi(
     @SerializedName("title")
     var title: String,
     @SerializedName("price")
-    var price: String,
+    var price: Double,
     @SerializedName("sale_price")
     var sale_price: String?,
     @SerializedName("permalink")

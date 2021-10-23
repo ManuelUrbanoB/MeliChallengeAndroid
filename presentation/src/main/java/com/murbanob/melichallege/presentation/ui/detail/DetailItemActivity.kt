@@ -1,6 +1,7 @@
 package com.murbanob.melichallege.presentation.ui.detail
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -29,6 +30,7 @@ class DetailItemActivity : BaseActivity() {
         setRecyclerView()
         setObservers()
         getItem()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun reviewItemSearch() {
@@ -66,7 +68,8 @@ class DetailItemActivity : BaseActivity() {
             is Result.Success -> {
                 adapterPictures.updateList(result.data.pictures)
                 binding.textTitleView.text = result.data.title
-                binding.textPriceView.text = result.data.price
+                binding.textPriceView.text =
+                    result.data.getPriceFormat()
             }
             is Result.Error -> {
                 binding.viewPagerPictures.showErrorRequestSnackBar(result.exception)
@@ -77,6 +80,17 @@ class DetailItemActivity : BaseActivity() {
     private fun getItem() {
         binding.progressBar.visibility = View.VISIBLE
         viewModel.getItemDetail(itemSearchId)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {

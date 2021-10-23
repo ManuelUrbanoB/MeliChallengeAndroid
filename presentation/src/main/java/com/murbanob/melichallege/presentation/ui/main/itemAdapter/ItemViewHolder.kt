@@ -31,7 +31,7 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private fun setInformationInView(itemSearch: ItemSearch) {
         loadImage(itemSearch.thumbnail)
         textTitleView.text = itemSearch.title
-        textPriceView.text = itemSearch.price
+        textPriceView.text = itemSearch.getPriceFormat()
     }
 
     private fun loadImage(url: String) {

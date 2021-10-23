@@ -10,4 +10,5 @@
     <dimen name="picture_detail_height">300dp</dimen>
     <dimen name="padding_detail_item">20dp</dimen>
     <dimen name="item_detail_margin_top_price">30dp</dimen>
+    <dimen name="size_item_price_in_list">20sp</dimen>
 </resources>

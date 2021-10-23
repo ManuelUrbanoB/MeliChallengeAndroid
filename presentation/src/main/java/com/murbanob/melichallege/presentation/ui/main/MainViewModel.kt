@@ -9,7 +9,6 @@ import com.murbanob.melichallenge.domain.helpers.Result
 import com.murbanob.melichallenge.domain.usecase.items.GetSearchItemsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
